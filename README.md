@@ -55,6 +55,17 @@ See [PROCESS.md](PROCESS.md) for the methodology behind evidence-based resume bu
 
 See [examples/senior-software-engineer.md](examples/senior-software-engineer.md) for a complete resume built using this process.
 
+## Confidentiality by Design
+
+The skill is built to **describe what you did, not expose what you built**. When mining repos:
+
+- Extracts patterns, technologies, and architectural approaches
+- Never copies actual code into your resume
+- Abstracts internal project names and proprietary terms
+- Focuses on transferable skills and accomplishments
+
+Your resume should demonstrate your capabilities without revealing your employer's intellectual property.
+
 ## Writing Style
 
 The skill follows these principles:
