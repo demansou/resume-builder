@@ -163,11 +163,11 @@ The user can provide the job description via:
 ### Example Interaction
 
 ```
-User: /resume
+User: /build-resume
 Claude: Which mode? 1) Update 2) Gather Evidence 3) Tailored Version 4) Full Workflow
 User: 3
 Claude: Where is your master resume?
-User: ./examples/senior-software-engineer.md
+User: ./examples/master-resume.md
 Claude: Got it. Now provide the job description - URL, paste the text, or give me a file path.
 User: https://jobs.lever.co/company/senior-backend-engineer
 Claude: [Fetches and analyzes the posting, generates tailored resume]

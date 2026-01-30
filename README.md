@@ -46,27 +46,27 @@ Anyone with a body of work they can point to:
 Add the marketplace and install the plugin:
 
 ```bash
-/plugin marketplace add demansou/resume-builder
+/plugin marketplace add demansou/build-resume-builder
 /plugin install resume-builder
 ```
 
 ### Option 2: Clone and Run
 
 ```bash
-git clone https://github.com/demansou/resume-builder.git
+git clone https://github.com/demansou/build-resume-builder.git
 cd resume-builder
 claude
 ```
 
 ### Option 3: Manual Copy
 
-Copy `skills/resume/SKILL.md` to your project's `.claude/commands/resume.md`
+Copy `skills/build-resume/SKILL.md` to your project's `.claude/commands/build-resume.md`
 
 ---
 
 Then invoke with:
 ```
-/resume
+/build-resume
 ```
 
 ## Evidence Sources
