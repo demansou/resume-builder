@@ -98,48 +98,52 @@ Solo developer driving the modernization of legacy monolithic automotive dealers
 ### **Microsoft** — Remote
 **Software Engineer** | June 2022 – September 2022
 
-- Delivered application workflows for Microsoft Viva HR & Onboarding portal
-- .NET full stack engineer: React, SPFx SharePoint, ACE adaptive card extensions
-- Azure App Service deployments, Logic App development, CosmosDB, Azure Functions
-- Open source library development and maintenance
+Short-term engagement on Microsoft Viva team, ended due to organizational restructuring.
+
+- Built HR onboarding workflows for Microsoft Viva portal using React and SharePoint Framework (SPFx)
+- Developed Adaptive Card Extensions (ACE) for mobile-first employee experiences
+- Contributed to open source libraries supporting the Viva ecosystem
+- Deployed services via Azure App Service, Logic Apps, CosmosDB, and Azure Functions
 
 ---
 
 ### **JPMorgan Chase & Co.** — Houston, Texas
 **Software Engineer** | September 2020 – June 2022
 
-Investment Banking technology team building enterprise productivity solutions.
+Investment Banking technology team building enterprise productivity tools for 50,000+ employees globally.
 
-- Developed Microsoft Office 365 VSTO productivity and branding solution used by 50,000+ JP Morgan employees worldwide
-- Designed and implemented distributed RESTful APIs, services, full text search, and NoSQL databases
-- Designed and began migration of backend infrastructure from virtual Windows Server instances to Kubernetes, CloudFoundry, and Elasticsearch
-- Led agile practices as agile lead, working with stakeholders and business analysts to refine product requirements and MVP criteria
-- Deployed two major Office 365 VSTO add-in versions as packaged installers globally to 50k consumers
-- Deployed and ensured stability of backend infrastructure releases through Jenkins CI/CD pipeline
+- Built Microsoft Office 365 VSTO add-in combining brand compliance automation with productivity features—auto-applied corporate templates, inserted required disclaimers, and enforced document formatting standards
+- Shipped two major add-in releases as enterprise installers deployed globally to 50k+ users
+- Designed RESTful APIs with full-text search and NoSQL backends supporting the add-in's document management features
+- Led infrastructure modernization: migrated backend services from Windows Server VMs to Kubernetes and CloudFoundry with Elasticsearch
+- Owned agile process as team lead, collaborating with stakeholders and BAs to define MVP criteria and sprint priorities
+- Maintained release stability through Jenkins CI/CD pipelines with automated testing and staged rollouts
 
 ---
 
 ### **HCSS** — Sugar Land, Texas
 **Software Engineer (Contract)** | March 2020 – September 2020
 
-- ASP.NET and React web development for construction safety software
-- Azure cloud instance management
-- Azure DevOps Continuous Integration and Deployment pipeline maintenance & building
-- SQL database management
+Contract role building features for construction industry safety management software.
+
+- Developed incident reporting and safety inspection features enabling field workers to document job site hazards in real-time
+- Built digital inspection checklists replacing paper-based workflows for construction site compliance
+- Implemented training and certification tracking to help contractors maintain OSHA compliance
+- Managed Azure DevOps CI/CD pipelines and Azure cloud infrastructure supporting the SaaS platform
 
 ---
 
 ### **IPT Global, LLC** — Houston, Texas
 **Software Engineer** | February 2018 – March 2020
 
-Oil & Gas pressure test planning and leak detection software.
+Oil & Gas software for pressure test planning and leak detection—my first professional engineering role.
 
-- WPF with MVVM desktop application development
-- ASP.NET MVC web application and React frontend development
-- SQL database scripting (MSSQL, SQLite), Azure Storage Blob, Azure DevOps
-- Software architecture team and memory usage analysis/optimization team
-- Bi-weekly Tuesday continuing education leader, DevOps team
-- Self-learning projects: ML.NET machine learning, Entity Framework Core, company-wide Azure DevOps Git repository implementation
+- Built pressure test planning interface enabling engineers to schedule and configure pipeline integrity tests
+- Developed data visualization dashboards displaying real-time pressure readings and historical test results
+- Implemented leak detection analysis features processing sensor data to identify pipeline anomalies
+- Joined memory optimization team, profiling and reducing application memory footprint for field deployments on constrained hardware
+- Led bi-weekly engineering education sessions, introducing team to new technologies and best practices
+- Championed company-wide migration from legacy version control to Azure DevOps Git repositories
 
 ---
 
