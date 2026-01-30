@@ -46,14 +46,14 @@ Anyone with a body of work they can point to:
 Add the marketplace and install the plugin:
 
 ```bash
-/plugin marketplace add demansou/build-resume-builder
+/plugin marketplace add demansou/resume-builder
 /plugin install resume-builder
 ```
 
 ### Option 2: Clone and Run
 
 ```bash
-git clone https://github.com/demansou/build-resume-builder.git
+git clone https://github.com/demansou/resume-builder.git
 cd resume-builder
 claude
 ```
