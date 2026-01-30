@@ -12,7 +12,7 @@ Greater Houston, TX | [linkedin.com/in/demansou](https://www.linkedin.com/in/dem
 
 Solo developer driving the modernization of legacy monolithic automotive dealership software into cloud-native microservices architecture. Led transformation efforts over 3+ years, decomposing .NET Framework monoliths into containerized services on AWS EKS.
 
-#### **Scan Platform (DSP/DSV)** — Solo Developer, 3+ years
+#### **Inventory Scan Platform** — Solo Developer, 3+ years
 *Greenfield replacement of Windows CE scanners and locally-hosted audit software with cloud-native platform*
 
 - Led redevelopment of Windows CE scan gun to modern RESTful API and Android application (unblocked revenue stream, 6% beta adoption rate)
@@ -32,7 +32,7 @@ Solo developer driving the modernization of legacy monolithic automotive dealers
 - Architected dual-database system: central RDS database for application/audit state + hundreds of isolated tenant PostgreSQL databases containing dealership inventory
 - Central database manages audit lifecycle (audits, bins, scans, variance calculations) while tenant databases serve as source of truth for real-time inventory data
 - Pioneered use of existing PGBouncer infrastructure (previously only used by DBA team) for application-level tenant routing, enabling cloud-hosted APIs to dynamically connect to any tenant database based on JWT claims
-- Implemented inventory writeback system syncing audit results from central database back to tenant-specific inventory tables, ensuring dealerships see up-to-date data in their ERP (Lightyear)
+- Implemented inventory writeback system syncing audit results from central database back to tenant-specific inventory tables, ensuring dealerships see up-to-date data in their ERP
 
 #### **Forms Platform Modernization** — Solo Developer
 *Replaced tightly-coupled Omnis 7 forms feature with cloud-native PDF generation platform*
@@ -43,15 +43,15 @@ Solo developer driving the modernization of legacy monolithic automotive dealers
 - Designed AST-based formula resolution engine replicating Omnis calculation behavior and syntax for the web—modeled and replicated each Omnis function the team used, supporting database lookups, conditional logic, and arithmetic for PDF field mapping with per-rooftop variations
 - Architected centralized cloud platform replacing forms stored across hundreds of dealer machines with single source of truth
 - Built scheduled deployment system eliminating need for manual holiday/weekend form updates
-- Designed React 19 form management UI + .NET 8 API with 5 independent EF Core DbContexts (FormsMetadata, PdfDocument, XfdfDocument, Audit, Settings)
-- Created Lightyear webhook integration enabling legacy Omnis desktop to trigger cloud-based form provisioning
+- Designed React 19 form management UI + .NET 8 API with multiple bounded contexts for separation of concerns
+- Created webhook integration enabling legacy desktop application to trigger cloud-based form provisioning
 - Implemented OpenTelemetry distributed tracing across decomposed services
-- Initiated FTW (Forms To Web) Go rewrite for document handling with DynamoDB/S3 storage
+- Initiated Go rewrite for document handling with DynamoDB/S3 storage
 
 #### **Infrastructure & Kubernetes** — Solo Developer (K8s with Technical Team Lead)
 *First developer at company to migrate from Windows IIS to AWS cloud infrastructure*
 
-**Evolution:** CEO mandate to use AWS Lambda for Scan microservices led to iterative architecture refinement:
+**Evolution:** Initial AWS Lambda architecture led to iterative refinement:
 - Started with individual Lambda functions per endpoint proxied through API Gateway, managed via CloudFormation
 - Consolidated to single ASP.NET Core Lambda with internal routing to reduce deployment complexity
 - Attempted Lambda warmers to mitigate cold starts, but only kept single instance alive—any scaling still triggered cold starts
@@ -69,14 +69,14 @@ Solo developer driving the modernization of legacy monolithic automotive dealers
 - Originally built CI/CD in AWS CodePipeline, later simplified to Bitbucket Pipelines for reduced complexity
 - Designed multi-service parallel build pipeline: 4 backend APIs (.NET, Go) + 4 frontends built concurrently
 - Implemented changeset-based conditional builds—PR pipelines only build services with changed files
-- Built GitOps deployment flow: pipeline pushes to ECR → updates Scimitar manifests → Flux CD reconciles to EKS
-- Created multi-environment promotion: develop→dev (auto), main→staging (auto-versioned), manual→prod
+- Built GitOps deployment flow: pipeline pushes to ECR → updates Kubernetes manifests → Flux CD reconciles to EKS
+- Created multi-environment promotion workflow with automated dev/staging deployments and manual production gates
 - Integrated Testcontainers for PostgreSQL integration tests in CI
 
 #### **Authentication Platform** — Solo Developer
 *Replaced legacy desktop-only auth with multi-tenant AWS Cognito + OIDC*
 
-**Legacy System:** Desktop-only username/password checked against tenant database with password decryption—no web support, no MFA.
+**Legacy System:** Desktop-only authentication with no web support or MFA.
 
 **Multi-Tenant Web Auth:**
 - Pioneered multi-tenant web authentication using tenant database routing with dealer ID as third credential field
