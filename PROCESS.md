@@ -2,73 +2,122 @@
 
 A repeatable process for building a comprehensive, evidence-based resume.
 
-## 1. Start with LinkedIn Profile
+## The Core Insight
 
-- Pull public LinkedIn data (basic info, certifications, education)
-- View full profile while logged in to get complete work history
-- Extract dates, titles, and full job descriptions
-- Click "see more" on each role to get expanded descriptions
+The best resume details come from **documented evidence** of your work, not just memory. Your memory tells you *what you did*; your documents show *what you actually accomplished*.
 
-## 2. Mine Local Repositories for Evidence
+---
 
-- Scan all repos in your working directory
-- Run `git log --author="YourName" --since="YYYY-MM-01"` to find commits
-- Identify projects by commit volume and content
-- Read CLAUDE.md files and READMEs for project context
-- Note commit counts per project for quantification
+## 1. Start with Your Profile
 
-## 3. Deep Dive Each Project
+- Pull your LinkedIn data (titles, dates, descriptions)
+- Gather any existing resume versions
+- Note gaps or vague descriptions to investigate
 
-For each major project, explore:
-- Codebase structure (directories, key files)
-- Pipeline configs (bitbucket-pipelines.yml, GitHub Actions) for CI/CD details
-- Tech stack from package.json, .csproj, go.mod files
-- Architectural patterns from code organization
-- Database migrations for data model understanding
-- API controllers for functionality overview
+---
+
+## 2. Identify Your Evidence Sources
+
+What documented work can you point to?
+
+| If you're a... | Look at... |
+|----------------|------------|
+| Engineer | Git repos, technical docs, architecture diagrams |
+| Product Manager | PRDs, roadmaps, launch announcements, metrics dashboards |
+| Marketer | Campaign reports, content you published, analytics |
+| Designer | Portfolio, case studies, design systems, shipped products |
+| Salesperson | CRM data, closed deals, presentations, quota attainment |
+| Researcher | Papers, patents, conference talks, grant proposals |
+| Manager | Team growth, performance reviews you wrote, org changes |
+| Anyone | Calendar history, email threads, project docs, reviews |
+
+---
+
+## 3. Mine Each Source
+
+For each evidence source:
+
+**Git Repositories:**
+- `git log --author="YourName" --since="YYYY-MM-01"` for commits
+- README files for project context
+- Package files for tech stack
+- Pipeline configs for DevOps experience
+
+**Documents:**
+- Reports and proposals you authored
+- Presentations you delivered
+- Strategies you defined
+
+**Published Work:**
+- Articles, blog posts, whitepapers
+- Patents or academic papers
+- Open source contributions
+- Conference talks or podcasts
+
+**Project Tools:**
+- Completed tickets and initiatives
+- Projects you led or owned
+- Cross-functional work
+
+**Calendar:**
+- Recurring meetings you ran
+- Project kickoffs and launches
+- Leadership patterns
+
+---
 
 ## 4. Interview Yourself
 
-For each project, answer these questions:
-- What was the **legacy system** you replaced?
-- What **problem** did it solve for the business?
-- What did **you specifically build** (solo vs. with team)?
-- What **architectural decisions** did you make and why?
-- What **metrics or impact** can you cite?
-- What was the **evolution** of the architecture over time?
+For each major accomplishment, answer:
+
+1. What was the **situation or challenge**?
+2. What **actions** did you take?
+3. What were the **results or impact**?
+4. What **skills** did this demonstrate?
+5. Can you **quantify** the outcome?
+6. Was this **solo work or team collaboration**?
+
+---
 
 ## 5. Iterate with Corrections
 
-- Correct assumptions about scope and ownership
-- Add business context that isn't visible in code
-- Clarify technical nuances and tradeoffs
-- Note what's complete vs. still in progress
+Your first draft will have gaps:
+- Add business context that isn't in the docs
+- Clarify scope and ownership
+- Correct assumptions about impact
+- Note what's complete vs. in progress
+
+---
 
 ## 6. Structure the Resume
 
 ### Framing Techniques
-- **Problem/Solution** framing for major projects
-- **Evolution sections** showing architectural journey
-- **Pioneering language** where you were first to do something
-- **Metrics** where available (adoption rates, time savings, user counts)
+- **SAR format** — Situation, Action, Result
+- **Evolution sections** — Show growth over time
+- **Pioneering language** — Where you were first
+- **Metrics** — Quantify wherever possible
 
 ### Detail Levels
-- **Master version**: Full detail with all context (this repo)
-- **Application version**: 1-2 pages, distilled bullet points
-- **Verbal version**: Key talking points for interviews
+- **Master version** — Full detail with all context (for your reference)
+- **Application version** — 1-2 pages, tailored to opportunity
+- **Verbal version** — Key talking points for interviews
 
 ---
 
-## Key Insight
+## 7. Keep It Current
 
-The best resume details come from *your memory* of the business context, not just the code. The code shows *what* was built; you provide *why* and *what it replaced*.
+Set a recurring reminder to:
+- Update after major project completions
+- Add new roles within a week of starting
+- Refresh before any job search
+- Mine new evidence sources quarterly
 
 ---
 
-## Tools Used
+## Tools That Help
 
-- **WebFetch**: Pull public web profile data
-- **Browser automation**: View authenticated pages (LinkedIn logged-in view)
-- **Git log**: Find commits by author and date range
-- **Explore agent**: Scan codebases for structure and patterns
-- **File reading**: READMEs, pipeline configs, package files
+- **File reading** — READMEs, docs, reports
+- **Git log** — Commit history by author/date
+- **Web fetch** — Published articles and portfolio
+- **Browser automation** — LinkedIn, project tools
+- **Calendar access** — Meeting patterns

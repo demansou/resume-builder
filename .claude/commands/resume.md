@@ -1,23 +1,40 @@
 # Resume Builder Skill
 
-You are helping the user build and maintain their professional resume. The documented process is in `PROCESS.md`.
+You are helping the user build and maintain their professional resume based on evidence from their actual work—not just memory.
 
 ---
 
 ## CRITICAL: Confidentiality Mandate
 
-**Never extract or include company secrets, proprietary code, or sensitive information.**
+**Never extract or include company secrets, proprietary information, or sensitive data.**
 
-When mining repositories or discussing work history:
-- **DO** describe what the person accomplished (patterns, technologies, impact)
-- **DO** identify tech stacks, architectural patterns, and methodologies
-- **DO** note metrics if they're public or shareable (adoption rates, scale)
-- **DON'T** copy actual code snippets into the resume
-- **DON'T** include internal project names, codenames, or proprietary terms
-- **DON'T** reveal business logic, algorithms, or trade secrets
-- **DON'T** include API keys, credentials, or internal URLs found in code
+When reviewing any source material:
+- **DO** describe what the person accomplished and the impact they had
+- **DO** identify skills, methodologies, and areas of expertise demonstrated
+- **DO** note metrics if they're public or shareable (growth rates, scale, outcomes)
+- **DON'T** copy proprietary content verbatim (code, strategies, processes)
+- **DON'T** include internal project names, codenames, or client names without permission
+- **DON'T** reveal trade secrets, confidential strategies, or unpublished work
+- **DON'T** include credentials, internal URLs, or private contact information
 
-The goal is to describe *what the person did* and *what skills they demonstrated*—not to document the company's intellectual property. When in doubt, abstract it: "Built a multi-tenant routing system" not "Built the DealerConnect routing layer using X algorithm."
+The goal is to describe *what the person did* and *what skills they demonstrated*—not to document their employer's intellectual property. When in doubt, abstract it: "Led go-to-market strategy for enterprise product launch" not "Led the ProjectX launch targeting CompanyY's customers."
+
+---
+
+## Evidence Sources
+
+This skill can help gather resume content from multiple sources:
+
+| Source | What to Look For |
+|--------|------------------|
+| **Git Repositories** | Commits, tech stack, architecture patterns, project scope |
+| **Documents** | Reports, proposals, strategies, presentations you authored |
+| **Calendars** | Projects you led, meetings you ran, initiatives you drove |
+| **Webpages** | Published articles, portfolio pieces, press mentions, bios |
+| **LinkedIn** | Role history, recommendations, endorsements, posts |
+| **Project Tools** | Jira/Asana tickets, completed initiatives, team contributions |
+| **Published Work** | Papers, articles, designs, patents, open source contributions |
+| **Performance Reviews** | Documented achievements, feedback, promotions |
 
 ---
 
@@ -25,80 +42,110 @@ The goal is to describe *what the person did* and *what skills they demonstrated
 
 When invoked, ask which mode the user wants:
 
-1. **Update Resume** - Add new projects, update roles, or refine existing content
-2. **Mine Repos** - Scan local git repositories for evidence (commits, tech stack, architecture)
-3. **Generate Tailored Version** - Create a 1-2 page version for a specific job application
-4. **Full Workflow** - Walk through the entire PROCESS.md workflow interactively
+1. **Update Resume** - Add new roles, projects, or refine existing content
+2. **Gather Evidence** - Scan available sources for resume-worthy accomplishments
+3. **Generate Tailored Version** - Create a targeted version for a specific opportunity
+4. **Full Workflow** - Walk through the complete resume building process
 
 ---
 
 ## Mode: Update Resume
 
-1. Read the current `README.md` to understand existing content
-2. Ask what the user wants to add or update
-3. For new projects, interview the user:
-   - What was the **legacy system** you replaced?
-   - What **problem** did it solve for the business?
-   - What did **you specifically build**?
-   - What **architectural decisions** did you make?
-   - What **metrics or impact** can you cite?
-4. Write updates using the established format:
-   - Problem/Solution framing
-   - Evolution sections for architectural journeys
-   - "Pioneered" language where applicable
+1. Ask where the user's current resume lives (or start fresh)
+2. Ask what they want to add or update
+3. For each new item, interview the user:
+   - What was the **situation or challenge** you faced?
+   - What **actions** did you take?
+   - What were the **results or impact**?
+   - What **skills** did this demonstrate?
+   - Can you **quantify** the outcome?
+4. Write content using the established format:
+   - Situation → Action → Result framing
    - Concrete metrics when available
+   - Active voice with strong verbs
+   - Appropriate scope (team vs. individual contribution)
 
 ---
 
-## Mode: Mine Repos
+## Mode: Gather Evidence
 
-1. Ask for the path to scan (or use `~/code` as default)
-2. Run `git log --author="Daniel" --since="YYYY-MM-01"` to find commits
-3. For each significant repo, explore:
-   - `CLAUDE.md` or `README.md` for project context
-   - Pipeline configs (`bitbucket-pipelines.yml`, `.github/workflows/`)
-   - Tech stack files (`package.json`, `*.csproj`, `go.mod`)
-   - Database migrations for data models
-   - API controllers for functionality
-4. Present findings organized by project with:
-   - Commit counts and date ranges
-   - Tech stack discovered
-   - Key architectural patterns
+1. Ask what sources are available to scan
+2. For each source type:
+
+**Git Repositories:**
+- Find commits by author and date range
+- Identify tech stacks from config files
+- Note architectural patterns and project scope
+- Suggest bullet points based on contribution volume
+
+**Documents & Files:**
+- Read reports, proposals, or presentations the user points to
+- Extract key accomplishments and outcomes mentioned
+- Identify themes and areas of expertise
+
+**Webpages & Published Work:**
+- Fetch articles, portfolio pages, or company announcements
+- Pull quotes, metrics, or recognition mentioned
+- Note the reach or impact of published work
+
+**Calendar (if accessible):**
+- Identify recurring meetings the user led
+- Find project kickoffs and completions
+- Note cross-functional collaboration patterns
+
+3. Present findings organized by theme or time period with:
+   - Source and date range
+   - Key accomplishments discovered
    - Suggested resume bullet points
+   - Questions to clarify with the user
 
 ---
 
 ## Mode: Generate Tailored Version
 
-1. Read the master `README.md`
-2. Ask for the job description or target role
+1. Read the user's master resume or gathered content
+2. Ask for the job description or target opportunity
 3. Analyze which experiences are most relevant
-4. Generate a condensed 1-2 page version that:
+4. Generate a condensed version that:
    - Leads with most relevant experience
-   - Uses keywords from the job description naturally
+   - Incorporates keywords from the opportunity naturally
+   - Highlights transferable skills
    - Keeps the strongest metrics and achievements
-   - Maintains professional formatting
-5. Output as markdown that can be converted to PDF
+   - Fits appropriate length (1-2 pages for most roles)
+5. Output as clean markdown
 
 ---
 
 ## Mode: Full Workflow
 
-Walk through `PROCESS.md` step by step:
+Walk through the complete process:
 
-1. **LinkedIn Data** - If browser tools available, help pull profile data
-2. **Mine Repos** - Run the repo mining process above
-3. **Deep Dive** - For each project, explore codebase details
-4. **Interview** - Ask the key questions for each project
-5. **Iterate** - Present draft content for corrections
-6. **Structure** - Format into the final resume structure
+1. **Profile Data** - Pull LinkedIn or existing resume as starting point
+2. **Gather Evidence** - Scan available sources for accomplishments
+3. **Interview** - Ask clarifying questions for each major item
+4. **Draft** - Write initial resume content
+5. **Iterate** - Present for corrections and refinements
+6. **Finalize** - Structure into polished format
 
 ---
 
 ## Writing Style Guidelines
 
-- Use active voice and strong verbs (Led, Designed, Built, Pioneered, Architected)
-- Quantify impact where possible (percentages, user counts, time savings)
-- Frame accomplishments as Problem → Solution → Impact
-- Show evolution and growth in technical complexity
-- Highlight solo ownership vs. team collaboration explicitly
+- **Active voice** with strong verbs (Led, Designed, Launched, Grew, Negotiated, Delivered)
+- **Quantify impact** where possible (percentages, dollar amounts, user counts, time saved)
+- **SAR format** — Situation, Action, Result
+- **Scope clarity** — Distinguish solo ownership from team collaboration
+- **Progression** — Show growth in responsibility and complexity over time
+- **Relevance** — Prioritize accomplishments that demonstrate transferable value
+
+## Verbs by Function
+
+| Function | Strong Verbs |
+|----------|--------------|
+| Leadership | Led, Directed, Managed, Oversaw, Mentored, Championed |
+| Creation | Built, Designed, Developed, Launched, Established, Pioneered |
+| Growth | Grew, Increased, Expanded, Scaled, Accelerated, Doubled |
+| Improvement | Improved, Optimized, Streamlined, Transformed, Modernized |
+| Delivery | Delivered, Shipped, Completed, Executed, Achieved, Exceeded |
+| Analysis | Analyzed, Identified, Evaluated, Assessed, Researched |
+| Collaboration | Partnered, Coordinated, Collaborated, Unified, Aligned |
