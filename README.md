@@ -19,13 +19,28 @@ Anyone with a body of work they can point to:
 
 ## Installation
 
-Copy `.claude/commands/resume.md` to your project's `.claude/commands/` directory, or clone this repo:
+### Option 1: Plugin Marketplace (Recommended)
+
+Add the marketplace and install the plugin:
+
+```bash
+/plugin marketplace add demansou/resume-builder
+/plugin install resume-builder
+```
+
+### Option 2: Clone and Run
 
 ```bash
 git clone https://github.com/demansou/resume-builder.git
 cd resume-builder
 claude
 ```
+
+### Option 3: Manual Copy
+
+Copy `skills/resume/SKILL.md` to your project's `.claude/commands/resume.md`
+
+---
 
 Then invoke with:
 ```

@@ -1,0 +1,27 @@
+{
+  "name": "demansou-tools",
+  "owner": {
+    "name": "Daniel Mansour"
+  },
+  "metadata": {
+    "description": "Personal productivity tools for Claude Code",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "resume-builder",
+      "source": "./",
+      "description": "Build evidence-based resumes by mining your actual work history",
+      "version": "1.0.0",
+      "author": {
+        "name": "Daniel Mansour"
+      },
+      "homepage": "https://github.com/demansou/resume-builder",
+      "repository": "https://github.com/demansou/resume-builder",
+      "license": "MIT",
+      "keywords": ["resume", "cv", "career", "job-search"],
+      "category": "productivity",
+      "tags": ["resume", "career", "job-search"]
+    }
+  ]
+}
