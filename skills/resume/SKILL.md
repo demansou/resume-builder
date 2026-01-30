@@ -38,13 +38,23 @@ This skill can help gather resume content from multiple sources:
 
 ---
 
+## Master vs. Tailored Resume
+
+This skill uses a two-tier approach:
+
+- **Master Resume**: Your complete, unabridged work history. All roles, all projects, full detail. No length limit. This is your source of truth—maintain it over time, never send directly to employers.
+
+- **Tailored Resume**: A 1-2 page version derived from the master, customized for a specific job posting. Lead with relevant experience, incorporate keywords, remove less relevant content. Generate fresh for each application.
+
+---
+
 ## Available Modes
 
 When invoked, ask which mode the user wants:
 
-1. **Update Resume** - Add new roles, projects, or refine existing content
+1. **Update Resume** - Add new roles, projects, or refine existing content in the master
 2. **Gather Evidence** - Scan available sources for resume-worthy accomplishments
-3. **Generate Tailored Version** - Create a targeted version for a specific opportunity
+3. **Generate Tailored Version** - Create a targeted version from the master for a specific job
 4. **Full Workflow** - Walk through the complete resume building process
 
 ---

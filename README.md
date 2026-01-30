@@ -6,6 +6,28 @@ A Claude Code skill for building evidence-based resumes by mining your actual wo
 
 Most resumes are written from memory, leading to vague bullet points like "worked on projects" or "improved outcomes." This skill helps you build a resume grounded in evidence from your documented work: code you committed, documents you wrote, projects you shipped, articles you published.
 
+## Master vs. Tailored Resume
+
+This system uses a **two-tier approach**:
+
+### Master Resume
+Your comprehensive, unabridged work history. Include everything:
+- All roles, projects, and accomplishments
+- Full technical detail and context
+- Complete metrics and outcomes
+- No length limit
+
+The master is your **source of truth**—you maintain it over time and never send it to employers directly. See [examples/master-resume.md](examples/master-resume.md).
+
+### Tailored Resume
+A focused 1-2 page version derived from your master, customized for a specific job:
+- Cherry-pick relevant experience
+- Reorder sections to lead with what matters
+- Emphasize keywords from the job posting
+- Remove or condense less relevant content
+
+You generate a new tailored version for each application. See [examples/tailored-resume.md](examples/tailored-resume.md) for a version targeting a backend infrastructure role.
+
 ## Who This Is For
 
 Anyone with a body of work they can point to:
@@ -105,9 +127,10 @@ Your resume demonstrates your capabilities without revealing your employer's int
 
 See [PROCESS.md](PROCESS.md) for the methodology behind evidence-based resume building.
 
-## Example
+## Examples
 
-See [examples/senior-software-engineer.md](examples/senior-software-engineer.md) for a resume built using this process.
+- [examples/master-resume.md](examples/master-resume.md) — Full master resume with complete detail
+- [examples/tailored-resume.md](examples/tailored-resume.md) — Condensed version for a backend infrastructure role
 
 ## Writing Style
 

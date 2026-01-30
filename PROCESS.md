@@ -97,10 +97,30 @@ Your first draft will have gaps:
 - **Pioneering language** — Where you were first
 - **Metrics** — Quantify wherever possible
 
-### Detail Levels
-- **Master version** — Full detail with all context (for your reference)
-- **Application version** — 1-2 pages, tailored to opportunity
-- **Verbal version** — Key talking points for interviews
+### Master vs. Tailored
+
+Maintain two tiers of resume:
+
+**Master Resume** (your source of truth)
+- Complete, unabridged work history
+- All roles, projects, accomplishments
+- Full technical detail and metrics
+- No length limit—this is for your reference
+- Update continuously as you complete work
+- Never send directly to employers
+
+**Tailored Resume** (what you submit)
+- 1-2 pages, derived from the master
+- Customized for each specific opportunity
+- Lead with most relevant experience
+- Incorporate keywords from the job posting
+- Remove or condense less relevant content
+- Generate fresh for each application
+
+### Verbal Version
+- Key talking points for interviews
+- 2-3 sentences per major accomplishment
+- Practice the SAR format out loud
 
 ---
 
