@@ -78,11 +78,14 @@ Scan your available sources for resume-worthy accomplishments:
 - Calendar patterns showing leadership
 
 ### 3. Generate Tailored Version
-Create a targeted version for a specific opportunity:
-- Analyzes which experiences are most relevant
-- Incorporates keywords naturally
-- Keeps your strongest metrics
-- Outputs clean markdown
+Create a targeted version for a specific job posting:
+- **Accepts job description via URL, pasted text, or file**
+- Fetches and analyzes job postings from LinkedIn, Greenhouse, Lever, etc.
+- Maps your experience to job requirements
+- Reorders and emphasizes relevant accomplishments
+- Incorporates keywords naturally (no keyword stuffing)
+- Identifies gaps to address in cover letter
+- Outputs clean 1-2 page markdown
 
 ### 4. Full Workflow
 Walk through the complete process from gathering evidence to polished resume.

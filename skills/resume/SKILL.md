@@ -103,16 +103,65 @@ When invoked, ask which mode the user wants:
 
 ## Mode: Generate Tailored Version
 
-1. Read the user's master resume or gathered content
-2. Ask for the job description or target opportunity
-3. Analyze which experiences are most relevant
-4. Generate a condensed version that:
-   - Leads with most relevant experience
-   - Incorporates keywords from the opportunity naturally
-   - Highlights transferable skills
-   - Keeps the strongest metrics and achievements
-   - Fits appropriate length (1-2 pages for most roles)
-5. Output as clean markdown
+Create a resume tailored to a specific job posting.
+
+### Input Options
+
+The user can provide the job description via:
+- **URL** — Fetch the job posting directly (e.g., LinkedIn, Greenhouse, Lever, company careers page)
+- **Pasted text** — Job description copied into the conversation
+- **File path** — Local file containing the job description
+
+### Process
+
+1. **Get the master resume**
+   - Ask where the user's master resume lives
+   - Read and parse the full content
+
+2. **Get the job description**
+   - If URL provided: fetch the page and extract the job posting
+   - If text provided: use directly
+   - If file provided: read the file
+
+3. **Analyze the job requirements**
+   - Extract required skills and technologies
+   - Identify preferred/nice-to-have qualifications
+   - Note years of experience requirements
+   - Identify key responsibilities
+   - Look for cultural or soft skill signals
+
+4. **Map experience to requirements**
+   - For each job requirement, find matching experience from the master resume
+   - Identify gaps (requirements not covered)
+   - Identify strengths (areas where experience exceeds requirements)
+   - Note transferable skills that apply even if not exact matches
+
+5. **Generate tailored resume**
+   - Reorder sections to lead with most relevant experience
+   - Emphasize bullet points that match job requirements
+   - Incorporate keywords from the posting naturally (don't keyword stuff)
+   - De-emphasize or remove less relevant experience
+   - Adjust technical skills section to highlight relevant technologies
+   - Keep the strongest metrics that demonstrate relevant impact
+   - Fit to 1-2 pages
+
+6. **Output**
+   - Clean markdown ready for conversion to PDF
+   - Summary of what was emphasized/de-emphasized
+   - Notes on any gaps the user might want to address in a cover letter
+
+### Example Interaction
+
+```
+User: /resume
+Claude: Which mode? 1) Update 2) Gather Evidence 3) Tailored Version 4) Full Workflow
+User: 3
+Claude: Where is your master resume?
+User: ./examples/senior-software-engineer.md
+Claude: Got it. Now provide the job description - URL, paste the text, or give me a file path.
+User: https://jobs.lever.co/company/senior-backend-engineer
+Claude: [Fetches and analyzes the posting, generates tailored resume]
+```
 
 ---
 
