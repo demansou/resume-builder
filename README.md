@@ -109,7 +109,23 @@ Create a targeted version for a specific job posting:
 - Identifies gaps to address in cover letter
 - Outputs clean 1-2 page markdown
 
-### 4. Full Workflow
+### 4. Export to PDF/Word
+Convert your markdown resume to a polished document:
+- Exports to PDF (recommended) or Word/DOCX
+- Uses pandoc with sensible defaults
+- Includes [styles/resume.css](styles/resume.css) for clean PDF output
+- Checks for required tools and guides installation
+
+**Quick export:**
+```bash
+# PDF
+pandoc resume.md -o resume.pdf --pdf-engine=wkhtmltopdf --css=styles/resume.css
+
+# Word
+pandoc resume.md -o resume.docx
+```
+
+### 5. Full Workflow
 Walk through the complete process from gathering evidence to polished resume.
 
 ## Confidentiality by Design

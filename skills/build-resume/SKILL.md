@@ -55,7 +55,8 @@ When invoked, ask which mode the user wants:
 1. **Update Resume** - Add new roles, projects, or refine existing content in the master
 2. **Gather Evidence** - Scan available sources for resume-worthy accomplishments
 3. **Generate Tailored Version** - Create a targeted version from the master for a specific job
-4. **Full Workflow** - Walk through the complete resume building process
+4. **Export to PDF/Word** - Convert a markdown resume to PDF or Word format
+5. **Full Workflow** - Walk through the complete resume building process
 
 ---
 
@@ -171,6 +172,143 @@ User: ./examples/master-resume.md
 Claude: Got it. Now provide the job description - URL, paste the text, or give me a file path.
 User: https://jobs.lever.co/company/senior-backend-engineer
 Claude: [Fetches and analyzes the posting, generates tailored resume]
+```
+
+---
+
+## Mode: Export to PDF/Word
+
+Convert a markdown resume to a polished PDF or Word document.
+
+### Prerequisites
+
+Check if the user has the required tools installed:
+
+```bash
+# Check for pandoc (required)
+pandoc --version
+
+# For PDF output, one of these is needed:
+# Option 1: wkhtmltopdf (recommended - simpler)
+wkhtmltopdf --version
+
+# Option 2: LaTeX (more control but heavier)
+pdflatex --version
+```
+
+### Installation (if needed)
+
+**macOS:**
+```bash
+brew install pandoc
+brew install --cask wkhtmltopdf
+```
+
+**Ubuntu/Debian:**
+```bash
+sudo apt install pandoc wkhtmltopdf
+```
+
+**Windows:**
+```bash
+choco install pandoc wkhtmltopdf
+```
+
+### Export Process
+
+1. **Get the resume file**
+   - Ask for the path to the markdown resume
+   - Verify the file exists and is valid markdown
+
+2. **Ask for output format**
+   - PDF (recommended for applications)
+   - Word/DOCX (if the employer requires it)
+
+3. **Ask for output location**
+   - Default: same directory as source, with appropriate extension
+   - Or user-specified path
+
+4. **Generate the document**
+
+**For PDF (using wkhtmltopdf):**
+```bash
+pandoc resume.md -o resume.pdf --pdf-engine=wkhtmltopdf \
+  --css=style.css \
+  -V margin-top=0.5in -V margin-bottom=0.5in \
+  -V margin-left=0.5in -V margin-right=0.5in
+```
+
+**For PDF (using LaTeX):**
+```bash
+pandoc resume.md -o resume.pdf \
+  -V geometry:margin=0.5in \
+  -V fontsize=11pt
+```
+
+**For Word:**
+```bash
+pandoc resume.md -o resume.docx
+```
+
+5. **Verify output**
+   - Check that the file was created
+   - Report the file path and size to the user
+
+### Optional: Custom Styling
+
+If the user wants custom styling for PDF output, create a CSS file:
+
+```css
+/* resume-style.css */
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 11pt;
+  line-height: 1.4;
+  color: #333;
+}
+
+h1 {
+  font-size: 18pt;
+  border-bottom: 2px solid #333;
+  padding-bottom: 4px;
+}
+
+h2 {
+  font-size: 14pt;
+  color: #444;
+  margin-top: 16px;
+}
+
+h3 {
+  font-size: 12pt;
+  margin-top: 12px;
+}
+
+ul {
+  margin: 4px 0;
+}
+
+li {
+  margin: 2px 0;
+}
+```
+
+Then export with:
+```bash
+pandoc resume.md -o resume.pdf --pdf-engine=wkhtmltopdf --css=resume-style.css
+```
+
+### Example Interaction
+
+```
+User: /build-resume
+Claude: Which mode? 1) Update 2) Gather Evidence 3) Tailored Version 4) Export PDF/Word 5) Full Workflow
+User: 4
+Claude: Which resume file do you want to export?
+User: ./tailored-resume.md
+Claude: What format? 1) PDF 2) Word
+User: 1
+Claude: [Checks for pandoc, exports to PDF, reports success]
 ```
 
 ---
