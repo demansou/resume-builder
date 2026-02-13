@@ -27,6 +27,13 @@ Solo developer driving the modernization of legacy monolithic automotive dealers
 - Optimized database performance to eliminate message queue dependency (removed SQS), enabling synchronous variance calculation
 - Implemented OpenTelemetry distributed tracing and structured logging for improved observability
 
+**Production Incident Response & Resiliency Upgrade:**
+- Investigated production performance regression affecting large-scale warehouse audits (~2,500 parts, ~9,000 scans across 93 bins) — traced full hot path, identified O(n) linear scan on lazy IEnumerable as root bottleneck, fixed with HashSet materialization for O(1) lookups
+- Conducted root cause analysis across the full observability pipeline; discovered the logging backend had been silently failing for weeks (storage exhaustion), rendering incident logs irrecoverable — documented findings and remediation in formal RCA
+- Designed resilient async variance processing architecture using ASP.NET Core BackgroundService + Channel<T> pattern — eliminated infrastructure sprawl by replacing external queue dependency with in-process async processing and database state machine as distributed coordination primitive across horizontally scaled pods
+- Built production-scale regression test suite using Testcontainers PostgreSQL, replicating real warehouse shapes (skewed bin distributions, rescans, mismatches) to catch performance degradation in CI
+- Removed dead code paths and redundant allocations from the variance pipeline, reducing per-request memory overhead
+
 **Multi-Tenant Database Architecture (Pioneered company-wide pattern):**
 - First project at DealerBuilt to go full-in on cloud infrastructure, pioneering the routing pattern now used across the organization
 - Architected dual-database system: central RDS database for application/audit state + hundreds of isolated tenant PostgreSQL databases containing dealership inventory
