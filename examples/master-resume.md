@@ -10,10 +10,10 @@ Greater Houston, TX | [linkedin.com/in/demansou](https://www.linkedin.com/in/dem
 ### **DealerBuilt** — Houston, Texas (Remote)
 **Senior Software Engineer** | September 2022 – Present
 
-Solo developer driving the modernization of legacy monolithic automotive dealership software into cloud-native microservices architecture. Led transformation efforts over 3+ years, decomposing .NET Framework monoliths into containerized services on AWS EKS.
+Engineer driving the modernization of legacy monolithic automotive dealership software into cloud-native microservices architecture. Led transformation efforts over 3+ years, decomposing .NET Framework monoliths into containerized services on AWS EKS. Sole developer of the identity/MFA platform and all of its infrastructure, sole owner of a document-archive platform inherited from its original developer, and primary engineer on the forms backend and admin UI; a core contributor on a team of roughly a dozen engineers rebuilding the dealership management system as a next-generation web platform.
 
-#### **Inventory Scan Platform** — Solo Developer, 3+ years
-*Greenfield replacement of Windows CE scanners and locally-hosted audit software with cloud-native platform*
+#### **Inventory Scan Platform** — Lead Developer, 3+ years
+*Greenfield replacement of Windows CE scanners and locally-hosted audit software with cloud-native platform. API, web, and auth surfaces led by me; the Android apps are shared with a second engineer.*
 
 - Led redevelopment of Windows CE scan gun to modern RESTful API and Android application (unblocked revenue stream, 6% beta adoption rate)
 - Designed inventory audit process allowing warehouse managers to audit during business hours rather than 24+ hour shutdowns (decreased warehouse down time by 100%)
@@ -41,7 +41,7 @@ Solo developer driving the modernization of legacy monolithic automotive dealers
 - Pioneered use of existing PGBouncer infrastructure (previously only used by DBA team) for application-level tenant routing, enabling cloud-hosted APIs to dynamically connect to any tenant database based on JWT claims
 - Implemented inventory writeback system syncing audit results from central database back to tenant-specific inventory tables, ensuring dealerships see up-to-date data in their ERP
 
-#### **Forms Platform Modernization** — Solo Developer
+#### **Forms Platform Modernization** — Primary Engineer (backend, admin UI, and infrastructure)
 *Replaced tightly-coupled Omnis 7 forms feature with cloud-native PDF generation platform*
 
 **Problem:** Legal forms for vehicle sales/trades/leases were stored on hundreds of individual dealer computers. The form building team spent most of their time on repetitive PDF → XFDF → field mapping tasks, tracking calculations in Excel spreadsheets. They were perpetually behind, and form updates required working holidays/weekends because deployments couldn't be scheduled.
@@ -53,7 +53,15 @@ Solo developer driving the modernization of legacy monolithic automotive dealers
 - Designed React 19 form management UI + .NET 8 API with multiple bounded contexts for separation of concerns
 - Created webhook integration enabling legacy desktop application to trigger cloud-based form provisioning
 - Implemented OpenTelemetry distributed tracing across decomposed services
-- Initiated Go rewrite for document handling with DynamoDB/S3 storage
+- Own the Go document-handling service (DynamoDB/S3 storage), inherited from its original developer and still in active development as a deliberate interim platform: it keeps document handling reliable for current dealers, and it is scheduled for deprecation, not extension, once document handling moves onto the next-generation platform (see Document Archive & Migration Platform)
+
+**2026 Delivery — Legacy Form Migration & Print:**
+- Built the legacy-form migration path: importing forms from the legacy 4GL platform, correcting formula semantics on import, replacing legacy forms in place, auditing duplicate field keys with an operator runbook, and repairing imported field associations under controlled review
+- Moved PDF intake to presigned direct-to-storage uploads
+- Added print-job status polling, curbside no-deal form printing, and promote-by-deployment for PDFs; pinned frontend deploys to the exact version commit so releases are reproducible
+- Built migration-reconciliation tooling: a source-owned change collector with advisory CI reports, used to verify the legacy and new platforms agree
+- Wrote a Playwright flow-testing contract that is deliberately app-structure-agnostic: it layers e2e against unit and integration tests, derives specs from the OpenSpec requirements, and isolates app-specific behavior in fixtures, so the suite ports to the next-generation platform by swapping fixtures rather than rewriting specs
+- Built a local multi-instance development environment with automated garbage-collection and stress tests so parallel worktrees and agents can run isolated stacks
 
 #### **Infrastructure & Kubernetes** — Solo Developer (K8s with Technical Team Lead)
 *First developer at company to migrate from Windows IIS to AWS cloud infrastructure*
@@ -80,6 +88,13 @@ Solo developer driving the modernization of legacy monolithic automotive dealers
 - Created multi-environment promotion workflow with automated dev/staging deployments and manual production gates
 - Integrated Testcontainers for PostgreSQL integration tests in CI
 
+**2026 CloudFormation Retirement & OpenTofu Adoption (identity platform, sole developer — all infrastructure is mine):**
+- Retired 25 CloudFormation stacks (13 staging, 12 production) using a retain-then-delete procedure behind change-set gates, verified by clean OpenTofu plans afterward
+- Adopted the existing 24 Lambda functions, API gateways, queues, CDN distributions, and IAM into OpenTofu with import blocks and no change to live configuration
+- Replaced eight CodePipeline stacks with Bitbucket Pipelines using OIDC-assumed, repository-scoped roles under a permissions boundary; staging deploys automatically on merge, production sits behind a manual review gate
+- Separated configuration from code deployment (infrastructure owns configuration, the pipeline owns function code) and added weighted-alias canary deploys with rollback targets for Lambda services
+- Applied the same OIDC plan/apply pipeline pattern to the document-archive platform's staging and production environments
+
 #### **Authentication Platform** — Solo Developer
 *Replaced legacy desktop-only auth with multi-tenant AWS Cognito + OIDC*
 
@@ -99,6 +114,54 @@ Solo developer driving the modernization of legacy monolithic automotive dealers
 **Internal Tools SSO:**
 - Engineered true OIDC authentication for internal users via EntraID (Azure AD) → SAML → Cognito federation
 - Enables secure access to internal web-facing tools without separate credentials
+
+**2026 Identity Platform Consolidation (sole developer):**
+- Consolidated ten separately maintained identity, MFA, SSO, and login services into a single monorepo with full history preserved and retired services archived; one pair of OpenTofu roots (staging, production) with seven shared modules
+- Brought the managed Cognito user pools under OpenTofu management
+- Enforced verified-location identity through a Cognito authorizer, rolled out in gated stages (staging first, then production) with refusal logging and repair of incomplete accounts
+- Rebuilt the hosted authentication UI on React, Vite, and TanStack with per-environment custom domains, and added an SMS opt-in consent step to MFA enrollment
+
+**2026 Least-Privilege & Security Remediation (identity platform, sole developer; scanner remediation also spans the document-archive and forms platforms):**
+- Put permissions boundaries on service and authorizer roles, deleted a shared wildcard-scoped policy in favor of dedicated per-function policies, and narrowed CI plan-read access into scoped managed policies
+- Added pipeline guards that verify IAM scope, scan diffs for secrets, and keep scanner exclusions documented with dated evidence
+- Drove critical and high dependency and IAM scanner findings down across the identity, document-archive, and forms platforms (library upgrades, removal of vulnerable dependencies, committed lockfiles); open criticals reached zero on rescan and the remainder is tracked to owners
+
+#### **Document Archive & Migration Platform** — Sole Owner (inherited), 2026
+*Go and OpenTofu platform that migrates dealer documents into cloud storage on a nightly schedule and serves them to a web viewer. Taken over in production from its original developer, and kept deliberately interim: investment is scoped to reliability, safety, and a clean cutover, because the service is planned for deprecation when document handling moves to the next-generation platform.*
+
+- Took sole ownership of a live production system inherited from its original developer, and made it dependable: the incidents and defects below were diagnosed, root-caused, and closed early in that ownership, and the operational knowledge now lives in runbooks and specs rather than in one person's head
+- Merged three separate repositories (API, migration job, shared library) into one monorepo and moved container image builds out of `tofu apply` into the pipeline with immutable tags, removing the design that caused two production incidents in two days
+- Diagnosed a fleet-wide nightly migration failure (image architecture mismatch) and hardened the build to verify the target architecture
+- Root-caused a deduplication bug (timestamp-precision comparison) that re-uploaded unchanged documents indefinitely, leaving most stored bytes as duplicate object versions
+- Built a read-only classification pipeline (S3 Inventory plus Athena) and then a content-aware cleanup job for the backlog: live re-derivation of every keep/delete decision, ETag-preconditioned deletes, runtime safety assertions, and dry-run on by default, because version deletes are irreversible
+- Added continuous-backup health alerting to catch the silent failure mode where the change feed stops advancing and the recovery window quietly empties
+- Migrated the document viewer frontend into the monorepo with a gated delivery path, moved it onto per-user authenticated access, and removed legacy key-compatibility code from the API authorizer
+- Authored cutover, credential-rotation, and backup-health runbooks with as-run records
+
+#### **Next-Generation DMS Web Platform** — Core Contributor (team of roughly a dozen engineers), 2026
+*Ground-up rebuild of the legacy dealership management system as a multi-tenant web platform; forms is one module of it*
+
+- Bootstrapped the spec baseline for the platform: 69 capability specs (OpenSpec) derived from the legacy sources and a prior platform
+- Consolidated a prototype UI library into shadcn-based primitives in the web app, restructured it into feature and view layers, and set up Playwright e2e with CI plus a rule hierarchy for agent contributors
+- Designed the forms-management domain aggregates and added architecture tests that check the DI graph and member-level boundaries
+- Built the outbox-driven provisioning worker and generation orchestrator that carries forms from the management side to document generation
+- Built the forms admin APIs: template upload and ETag-pinned promote/replace, a formula field catalog with server-side validation, and rooftop availability; added e2e specs for every template upload route
+- Built a migration reconciliation register and validator, and authored the forms-migration PRD and architecture corpus and the planning trunk for the epics
+
+**Print Platform — in flight** *(design and proof of concept delivered; build underway, not yet merged to the platform or piloted)*
+- **Problem:** Dealership printing runs through a brittle chain of an embedded web view, the legacy desktop application, and a third-party PDF reader. It gives no reliable record of whether a job actually printed, and the new platform has no way to print without the legacy app. The work replaces that chain for forms office-PDF and dot-matrix (impact) printing with a platform-run print service and a native Windows client.
+- **Architecture:** A cloud control plane inside the platform API, plus a signed, unattended Windows client per physical install: a supervisor service, an isolated print executor, native spooler submission (rasterized PDF through GDI, raw spooler writes for dot-matrix), an auto-updater with rollback, and an administrator setup app for enrollment. The client lives in its own solution with its own types and is tested against a contract mock, so it can be built and verified independently of the server.
+- **Dispatch design:** I evaluated two dispatch shapes and chose "wake-up plus HTTPS claim". The real-time channel carries only a job-available nudge; job details and document links are released only through authorized, idempotent claims. The client reconciles on cold start, every reconnect, and a jittered safety poll, so a lost nudge costs latency but never a job. The design targets no lost jobs, no double prints, no cross-dealership routing, and no silent reprints, using a local attempt ledger and an explicit "ambiguous" outcome for the one case that cannot be known: a job that may already have reached the spooler.
+- **Wire contract:** I authored a versioned print-service contract as the single source of the protocol, with one writer at a time and a changelog entry per change. It stays pre-1.0 until the claim and reconcile surface ships, then freezes with version negotiation. The server mints attempt identities, and each attempt carries a renewable lease; lease loss before spooling re-offers the job, and lease loss after spooling ends it as ambiguous.
+- **Security model:** Each install enrolls once with a single-use, short-lived code and gets its own machine identity and a non-exportable key pair (TPM-backed where available). Tenant scope derives from server-side enrollment state rather than anything the client sends, and revocation closes the connection and suspends the install's printer mappings. Exceptions to the platform's tenant-scoping rules are recorded with owners and compensating controls.
+- **Proof of concept:** A walking skeleton ran a real Windows service on a cloud VM against a dev cluster over a real WAN path, including the real machine-key authentication handshake. It was backed by a network-chaos test suite and a fleet simulator, and its findings drove the dispatch decision.
+- **Where it stands:** The control-plane and client builds are substantially complete on epic branches, and the observability, support-bundle, runbook, and release-criteria work is drafted. Verification on real Windows hardware, the live code-signing pipeline, a physical dot-matrix print run, and a pilot cohort are still ahead. Nothing here is merged or in production yet.
+
+#### **AI-Assisted Delivery Practices** — Across the above
+- Deliver changes through a spec-driven (OpenSpec) process in all four codebases, with archived changes serving as the decision record
+- Wrote a declarative local-validation contract: a table mapping changed paths to the validations required, mirroring the CI pipeline and including a tenant-data guard and a spec gate, so agents and engineers run the same checks before opening a PR
+- Added agent-facing guidance to the repositories (rule hierarchies, a flow-testing guide) and repo-local agent skills for publishing and ticket authoring
+- Run agent-driven delivery loops for batches of related changes, with automated code review in the PR workflow
 
 ---
 
@@ -160,9 +223,11 @@ Oil & Gas software for pressure test planning and leak detection—my first prof
 
 **Frontend:** React 19, TypeScript, Vite, TanStack (Router, Query, Form, Table), TailwindCSS, MUI, WPF
 
-**Infrastructure:** OpenTofu, AWS (EKS, ECR, Cognito, Lambda, CloudWatch, S3, RDS), Kubernetes, Flux CD, Azure
+**Infrastructure:** OpenTofu, AWS (EKS, ECR, Cognito, Lambda, API Gateway, CloudWatch, S3, Athena, RDS, SQS), Kubernetes, Flux CD, Azure
 
-**DevOps:** Docker, Kustomize, Bitbucket Pipelines, Azure DevOps, Jenkins, OIDC Federation, OpenTelemetry
+**DevOps:** Docker, Kustomize, Bitbucket Pipelines, Azure DevOps, Jenkins, OIDC Federation, OpenTelemetry, Canary Deploys
+
+**Testing & AI-Assisted Delivery:** Playwright, Vitest, Testcontainers, OpenSpec (spec-driven development), Claude Code and agent workflows
 
 **Architecture:** Monolith Decomposition, Microservices, Layered .NET, Monorepo, GitOps, Strangler Fig Pattern
 
