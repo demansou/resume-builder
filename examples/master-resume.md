@@ -10,7 +10,7 @@ Greater Houston, TX | [linkedin.com/in/demansou](https://www.linkedin.com/in/dem
 ### **DealerBuilt** — Houston, Texas (Remote)
 **Senior Software Engineer** | September 2022 – Present
 
-Engineer driving the modernization of legacy monolithic automotive dealership software into cloud-native microservices architecture. Led transformation efforts over 3+ years, decomposing .NET Framework monoliths into containerized services on AWS EKS. Sole developer of the identity/MFA platform and all of its infrastructure, sole owner of a document-archive platform inherited from its original developer, and primary engineer on the forms backend and admin UI; a core contributor on a team of roughly a dozen engineers rebuilding the dealership management system as a next-generation web platform.
+Engineer driving the modernization of legacy monolithic automotive dealership software into cloud-native microservices architecture. Led transformation efforts over 3+ years, decomposing .NET Framework monoliths into containerized services on AWS EKS. Sole developer of the identity/MFA platform and all of its infrastructure, sole owner of a document-archive platform inherited from its original developer, and sole developer of the forms platform, which I am now migrating onto the company's shared next-generation web platform, where I am a primary engineer on a team of roughly a dozen.
 
 #### **Inventory Scan Platform** — Lead Developer, 3+ years
 *Greenfield replacement of Windows CE scanners and locally-hosted audit software with cloud-native platform. API, web, and auth surfaces led by me; the Android apps are shared with a second engineer.*
@@ -41,7 +41,7 @@ Engineer driving the modernization of legacy monolithic automotive dealership so
 - Pioneered use of existing PGBouncer infrastructure (previously only used by DBA team) for application-level tenant routing, enabling cloud-hosted APIs to dynamically connect to any tenant database based on JWT claims
 - Implemented inventory writeback system syncing audit results from central database back to tenant-specific inventory tables, ensuring dealerships see up-to-date data in their ERP
 
-#### **Forms Platform Modernization** — Primary Engineer (backend, admin UI, and infrastructure)
+#### **Forms Platform Modernization** — Solo Developer
 *Replaced tightly-coupled Omnis 7 forms feature with cloud-native PDF generation platform*
 
 **Problem:** Legal forms for vehicle sales/trades/leases were stored on hundreds of individual dealer computers. The form building team spent most of their time on repetitive PDF → XFDF → field mapping tasks, tracking calculations in Excel spreadsheets. They were perpetually behind, and form updates required working holidays/weekends because deployments couldn't be scheduled.
@@ -138,8 +138,8 @@ Engineer driving the modernization of legacy monolithic automotive dealership so
 - Migrated the document viewer frontend into the monorepo with a gated delivery path, moved it onto per-user authenticated access, and removed legacy key-compatibility code from the API authorizer
 - Authored cutover, credential-rotation, and backup-health runbooks with as-run records
 
-#### **Next-Generation DMS Web Platform** — Core Contributor (team of roughly a dozen engineers), 2026
-*Ground-up rebuild of the legacy dealership management system as a multi-tenant web platform; forms is one module of it*
+#### **Next-Generation DMS Web Platform** — Primary Engineer, forms module and print platform (team of roughly a dozen engineers), 2026
+*Ground-up rebuild of the legacy dealership management system as a multi-tenant web platform. I am migrating the forms platform onto it; forms is one module of the larger platform.*
 
 - Bootstrapped the spec baseline for the platform: 69 capability specs (OpenSpec) derived from the legacy sources and a prior platform
 - Consolidated a prototype UI library into shadcn-based primitives in the web app, restructured it into feature and view layers, and set up Playwright e2e with CI plus a rule hierarchy for agent contributors
