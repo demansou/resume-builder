@@ -10,7 +10,7 @@ Greater Houston, TX | [linkedin.com/in/demansou](https://www.linkedin.com/in/dem
 ### **DealerBuilt** — Houston, Texas (Remote)
 **Senior Software Engineer** | September 2022 – Present
 
-Engineer driving the modernization of legacy monolithic automotive dealership software into cloud-native microservices architecture. Led transformation efforts over 3+ years, decomposing .NET Framework monoliths into containerized services on AWS EKS. Sole developer of the identity/MFA platform and all of its infrastructure, sole owner of a document-archive platform inherited from its original developer, and sole developer of the forms platform, which I am now migrating onto the company's shared next-generation web platform, where I am a primary engineer on a team of roughly a dozen.
+Engineer driving the modernization of legacy monolithic automotive dealership software into cloud-native microservices architecture. Led transformation efforts over 3+ years, decomposing .NET Framework monoliths into containerized services on AWS EKS. Sole developer of the identity/MFA platform and all of its infrastructure, sole owner of a document-archive platform inherited from its original developer, and sole developer of the forms platform, which I am now migrating onto the company's shared next-generation web platform, where I am a primary engineer on a team of about half a dozen.
 
 #### **Inventory Scan Platform** — Lead Developer, 3+ years
 *Greenfield replacement of Windows CE scanners and locally-hosted audit software with cloud-native platform. API, web, and auth surfaces led by me; the Android apps are shared with a second engineer.*
@@ -138,7 +138,7 @@ Engineer driving the modernization of legacy monolithic automotive dealership so
 - Migrated the document viewer frontend into the monorepo with a gated delivery path, moved it onto per-user authenticated access, and removed legacy key-compatibility code from the API authorizer
 - Authored cutover, credential-rotation, and backup-health runbooks with as-run records
 
-#### **Next-Generation DMS Web Platform** — Primary Engineer, forms module and print platform (team of roughly a dozen engineers), 2026
+#### **Next-Generation DMS Web Platform** — Primary Engineer, forms module and print platform (team of about half a dozen engineers), 2026
 *Ground-up rebuild of the legacy dealership management system as a multi-tenant web platform. I am migrating the forms platform onto it; forms is one module of the larger platform.*
 
 - Bootstrapped the spec baseline for the platform: 69 capability specs (OpenSpec) derived from the legacy sources and a prior platform
